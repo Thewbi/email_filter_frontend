@@ -1,0 +1,18 @@
+<p>Halt dei Maul!</p>
+
+<button (click)="commit()">Commit</button>
+
+<div *ngFor="let mail of mails">
+  <div>{{ mail.id }}</div>
+  <div>{{ mail.from }}</div>
+  <div>{{ mail.subject }}</div>
+</div>
+
+<div *ngFor="let mailMapEntry of mailMap | keyvalue" class="card-rounded-corners">
+  <div class="card-header">{{mailMapEntry.key}}</div>
+  <div *ngFor="let mail of mailMapEntry.value" [class.deleted]="mail.deleted" class="card-element">
+    {{ mail.id }} {{ mail.from }} {{ mail.subject }}
+
+    <button (click)="toggleDeleteMail(mail)">Delete</button>
+  </div>
+</div>
